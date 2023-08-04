@@ -4,7 +4,7 @@ const SearchBox = ({value, setSearchValue}) => {
   return (
     <div className=''>
         <input
-            className='form-control'
+            className='form-control text-black'
             value={value}
             onChange={(e)=> setSearchValue(e.target.value)}
             placeholder='Type to search...'

@@ -47,7 +47,7 @@ const App = () => {
       <div className='flex'>
         <MovieList 
             movies={movies} 
-            FavouriteComponent={AddToFavourites}
+            favouriteComponent={AddToFavourites}
             handleFavouritesClick={addFavouriteMovie}
         />
       </div>
