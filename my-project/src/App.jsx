@@ -7,6 +7,7 @@ import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import AddToFavourites from './components/AddToFavourites';
+import RemoveFavourites from './components/RemoveFavourites';
 
 
 
@@ -27,15 +28,42 @@ const App = () => {
 		}
 	};
 
-  const addFavouriteMovie = (movie) =>{
-    const newFavourite = [...favourites, movie]
-    setFavourites(newFavourite)
-  }
+ 
 
   useEffect(() => {
 		getMovieRequest();
 	}, [searchValue]);
 
+
+  useEffect(() => {
+    const movieFavs = JSON.parse(localStorage.getItem("react-movie-app-favourites")
+    );
+
+    if (movieFavs) {
+      setFavourites(movieFavs);
+    }
+    // this means it only runs when there's a favourite found
+
+  }, []);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items))
+  }
+
+  const addFavouriteMovie = (movie) =>{
+    const newFavourite = [...favourites, movie]
+    setFavourites(newFavourite)
+
+
+    saveToLocalStorage(newFavourite)
+  }
+
+  const removeFavouriteMovie = (movie) => {
+    const newFavouriteList = favourites.filter((favourite) => favourite.imdbID !== movie.imdbID);
+    
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList)
+  };
 
   return (
     <div className='m-6 movie_app'>
@@ -57,7 +85,12 @@ const App = () => {
 			</div>
 
       <div className=''>
-				<MovieList movies={favourites} favouriteComponent={AddToFavourites} />
+				<MovieList 
+            movies={favourites} 
+            favouriteComponent={RemoveFavourites}
+            handleFavouritesClick={removeFavouriteMovie}
+        />
+
 			</div>
 
     </div>

@@ -8,7 +8,7 @@ const AddToFavourites = () => {
     <>
 
         <span className='mr-2'>Add to Favourites</span>
-			<img src={EmptyHeartWhite}/>
+			<img src={FilledHeart}/>
     </>
   )
 }
