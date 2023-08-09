@@ -1,18 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 body {
 	background: #141414;
 	color: #ffffff;
 }
+/* .movie_app{
+	max-height: 100vh;
+} */
+.brand{
+	color: red;
+	font-size: 2rem;
+	font-weight: 600;
+	font-family: 'play', sans-serif;
+}
 
+@media(min-width: 475){
+	.brand{
+		color: red;
+		font-size: 3rem;
+		font-weight: 600;
+		font-family: 'play', sans-serif;
+	}
+}
 .movie-container{
   min-width: 15rem;
-  min-height: 25rem;
+  min-height: 20rem;
   position: relative;
   transition: transform 0.2s;
 }
 
 .movie-container:hover {
   cursor: pointer;
-  transform: scale(1.135);
+  transform: scale(1.1);
 }
 
 
@@ -36,4 +54,62 @@ body {
 .movie_app > .flex {
   overflow-y: auto;
 	flex-wrap: nowrap;
+}
+
+.loading{
+  /* padding: 25%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* height: 100%; */
+  overflow-y: hidden;
+  
+  width: 100%;
+  
+  font-weight: 700;
+  font-size: 3rem;
+  background: #141414;
+
+  
+}
+
+.nav{
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	height: 4rem;
+	width: 100vw;
+	background: #141414;
+}
+
+.flicker {
+  
+  font-size: 4rem;
+  font-family: 'play', sans-serif;
+  /* margin: 1rem auto; */
+   color: #fffefe61;
+   /* #e6e6e6 */
+  background: -webkit-gradient(linear, left top, right top, from(#e6e6e6), to(#1d1c1c), color-stop(0.8, #ffffff)) no-repeat;
+  background: gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.8, #fff)) no-repeat;
+  background-size: 110px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: flick 1.5s infinite;
+}
+@keyframes flick {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+.tm{
+	display: none;
+}
+
+.heading{
+	font-size: 1.75rem;
 }
